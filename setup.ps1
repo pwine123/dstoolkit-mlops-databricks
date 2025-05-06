@@ -3,7 +3,7 @@
 
 $SubscriptionId=( az account show --query id -o tsv )
 
-$main_sp_name="main_sp_"+$(Get-Random -Minimum 1000 -Maximum 9999)
+$main_sp_name="main_sp_"+$(Get-Random -Minimum 1000 -Maximum 5000)
 
 # use --sdk-auth flag if using GitHub Action Azure Authenticator 
 $DBX_CREDENTIALS=( az ad sp create-for-rbac -n $main_sp_name --role Owner --scopes /subscriptions/$SubscriptionId --query "{ARM_TENANT_ID:tenant, ARM_CLIENT_ID:appId, ARM_CLIENT_SECRET:password}")
